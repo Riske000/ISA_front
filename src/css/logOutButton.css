@@ -1,0 +1,11 @@
+.button-right_bottom {
+  position: fixed;
+  bottom: -10px;
+  right: 0px;
+}
+
+.div-right_bottom {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}

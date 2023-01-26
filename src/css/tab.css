@@ -1,0 +1,31 @@
+.tab-bar {
+  display: flex; /* Enable flexbox mode */
+  margin-top: 0; /* Remove the top margin */
+  white-space: nowrap; /* Prevent the tabs from wrapping */
+}
+
+.tab {
+  flex: 1; /* Divide the available space equally among the tabs */
+  text-align: center; /* Center the text */
+  background-color: rgb(220, 220, 220); /* Add a background color */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 0 0 10px 10px; /* Round the corners at the top */
+  padding: 10px; /* Add some padding */
+  font-size: 15px; /* Increase the font size */
+  font-weight: bold; /* Make the font bold */
+  color: #333; /* Set the text color */
+}
+
+/* Add a hover effect for the tabs */
+.tab:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Add a different style for the active tab */
+.tab.active {
+  background-color: #fff;
+  border-bottom: none; /* Remove the bottom border */
+  font-size: 18px;
+}
+

@@ -1,0 +1,102 @@
+table {
+  border-collapse: separate;
+  width: 80%;
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+}
+th,
+td {
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  width: 25%;
+  min-height: 30px;
+  text-align: center;
+  padding: 8px;
+  display: table-cell;
+}
+tr {
+  display: table-row;
+}
+td {
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  transition: all 0.2s ease-in-out;
+}
+td:hover {
+  background-color: #efefef;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+th {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 10px;
+}
+
+footer {
+  position: fixed;
+  left: 25%;
+  right: 25%;
+  bottom: 0;
+  width: 50%;
+  background-color: rgba(128, 128, 128, 0.5);
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+}
+
+.p-center {
+  position: fixed;
+  margin-left: 35%;
+  margin-top: 2%;
+  box-sizing: border-box;
+  border: 3px solid #000000;
+  background-color: #dddddd;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+.navbar {
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  background-color: rgb(120, 120, 120); /* Add a background color */
+  border: 1px solid black; /* Add a border */
+  height: 0.05px;
+  width: 0.05px;
+  padding: 1.5%;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.nav.active {
+  background-color: rgb(85, 85, 85);
+  font-size: 16px;
+}
+
+.selectt {
+  width: 150px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  appearance: none;
+}
+
+.selectt:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
