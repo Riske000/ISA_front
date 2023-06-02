@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+  }
+  
+  .center-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 20%;
+    margin-right: 20px;
+    border-radius: 5%;
+    background-color: #f2f2f2; 
+    border-color: black;
+  }
+  
+  .working-hours-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 15%;
+    height: 10%;
+    border-radius: 5%;
+    background-color: #f2f2f2;
+    border-color: black;
+  }
+  
+  .natpis{
+    font-size: 10px;
+    color: red;
+    margin-left: 5px;
+  }
+
+  .working-hours-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .working-hours-title {
+    font-weight: bold;
+  }
+  
+  .edit-icon {
+    font-size: 24px;
+  }
+  .working-hours-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .working-hours-title {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .edit-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .editable-fields {
+    margin-bottom: 10px;
+  }
+  
+  .editable-fields input {
+    margin-bottom: 5px;
+  }
+  
+  .active {
+    color: blue;
+  }
+    
+  
+  
+  

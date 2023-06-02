@@ -57,6 +57,9 @@ const LoginForm = (props) => {
             if (data.role === "SystemAdministrator") {
               navigate("/homePageAdmin");
             }
+            if (data.role === "CenterAdministrator") {
+              navigate("/homePageAdminCenter");
+            }
           });
       })
       .catch((error) => {

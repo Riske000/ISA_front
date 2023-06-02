@@ -1,0 +1,37 @@
+
+.MyCalendar-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    padding: 10px;
+  }
+  
+
+  .MyCalendar-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .MyCalendar-event {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .MyCalendar-selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .MyCalendar-container .rbc-event--free {
+    background-color: transparent;
+  }
+  
+  .MyCalendar-container .rbc-event--free .rbc-event-content {
+    background-color: green;
+    color: white;
+  }
+  
+  

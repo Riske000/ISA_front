@@ -1,0 +1,109 @@
+.profile-container1 {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+  
+  .profile-form1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    height: 540px;
+  }
+  
+  .edit-button {
+    cursor: pointer;
+    font-size: 40px;
+    color: blue;
+    margin-left: 380px;
+    border-radius: 3px;
+  }
+  
+  button.submit-button1 {
+    margin-top: 10px;
+  }
+  
+  button.submit-button1  {
+    padding: 9px 7px;
+    background-color: rgb(98, 197, 96);
+    color: white; 
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.submit-button1 button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  input:disabled {
+    background-color: #f7f7f7;
+  }
+
+  .loyalty-container {
+    position: relative;
+    margin-top: 20px;
+    width: 220px;
+    margin-left: 500px;
+  }
+  
+  .loyalty-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .loyalty-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .loyalty-icon {
+    margin-right: 10px;
+  }
+  
+  .loyalty-info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    display: none;
+    margin-left: 500px;
+  }
+  
+  .loyalty-info.show {
+    display: block;
+  }
+  
+  .loyalty-info div {
+    margin-bottom: 5px;
+  }
+  
+  .loyalty-info label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+  }
+  
+  .loyalty-info input {
+    width: 200px;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #333;
+    pointer-events: none;
+  }
+  
+
+  

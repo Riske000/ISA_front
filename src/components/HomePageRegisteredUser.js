@@ -12,6 +12,8 @@ import MyPenalties from "./MyPenalties";
 import WriteAComplaint from "./WriteAComplaint";
 import HistoryOfVisits from "./HistoryOfVisits";
 import QRcodes from "./QRcodes";
+import Calendar from "./Calendar";
+import TermForm from "./TermForm";
 
 const token = localStorage.getItem("token");
 
@@ -78,6 +80,7 @@ const HomePageRegisteredUser = (props) => {
         >
           My profile
         </div>
+        
       </div>
       <div>
             {activeTab === "All centers" && <AllCenters/>}
@@ -95,6 +98,10 @@ const HomePageRegisteredUser = (props) => {
             {activeTab === "Write an complaint" && <WriteAComplaint/>}
 
             {activeTab === "My profile" && <MyProfile/>}
+
+            {activeTab === "Work Calendar" && <Calendar/>}
+
+            {activeTab === "Add Term" && <TermForm/>}
       </div>
       <button className="button-right_bottom" onClick={onLogOutClick}>
         Log out

@@ -12,6 +12,12 @@ import {
 } from "react-router-dom";
 import HomePageRegisteredUser from "./components/HomePageRegisteredUser";
 import HomePageAdmin from "./components/HomePageAdmin";
+import MyCalendar from "./components/Calendar";
+import TermForm from "./components/TermForm";
+import AdminsCenterDetails from "./components/AdminsCenterDetails";
+import HomePageAdminCenter from "./components/HomePageAdminCenter";
+import MyProfile from "./components/MyProfile";
+
 
 
 function App() {
@@ -25,6 +31,11 @@ function App() {
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/homePageRegisteredUser" element={<HomePageRegisteredUser />} />
         <Route path="/homePageAdmin" element={<HomePageAdmin />} />
+        <Route path="/calendar" element={<MyCalendar />} />
+        <Route path="/addTerm" element={<TermForm />} />
+        <Route path="/homePageAdminCenter" element={<HomePageAdminCenter />} />
+        <Route path="/adminsCenter" element={<AdminsCenterDetails />} />
+        <Route path="/myProfile" element={<MyProfile />} />
       </Routes>
   );
 }

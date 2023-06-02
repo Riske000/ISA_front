@@ -1,0 +1,86 @@
+.success-message {
+    display: flex;
+    align-items: center;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .success-icon {
+    color: #3c763d;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+
+
+  .term-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 0px;
+    border-radius: 5px;
+    border-color: black;
+  }
+  
+  .term-form-container label {
+    display:block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .term-form-container input,
+  .term-form-container select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .term-form-container input {
+    width: 190px;
+    height: 40px;
+  }
+
+  .term-form-container select {
+    width: 190px;
+    height: 40px;
+  }
+  
+  .error-message {
+    font-size: 14px;
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .react-datepicker-wrapper {
+    margin-left: 10px;
+  }
+
+  .term-form-container > div:nth-child(1) > label {
+    margin-left: 10px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }  
+  
+  
+
+  
+  
