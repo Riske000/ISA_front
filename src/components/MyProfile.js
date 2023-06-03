@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import { FcEditImage, FcApproval } from "react-icons/fc";
+import { FcEditImage, FcApproval, FcLike, FcRating, FcMindMap } from "react-icons/fc";
 import "../css/MyProfile.css";
 
 const MojProfil = () => {
@@ -10,7 +10,6 @@ const MojProfil = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showLoyaltyInfo, setShowLoyaltyInfo] = useState(false);
-
 
   const [editedUser, setEditedUser] = useState({
     name: "",
@@ -50,18 +49,18 @@ const MojProfil = () => {
       const headers = {
         Authorization: token,
       };
-  
+
       const response = await axios.put(
         `http://localhost:8080/api/user/${userId}`,
         editedUser,
         { headers }
       );
-  
+
       setUser(response.data);
       setIsEditing(false);
       setIsSubmitting(false);
       setEditedUser(response.data);
-  
+
       localStorage.setItem("currentUser", JSON.stringify(response.data));
       console.log(editedUser);
     } catch (error) {
@@ -70,28 +69,114 @@ const MojProfil = () => {
     }
   };
 
-  
   const handleToggleLoyaltyInfo = () => {
     setShowLoyaltyInfo(!showLoyaltyInfo);
   };
 
+  const renderLoyaltyBenefits = (loyaltyCategory) => {
+    switch (loyaltyCategory) {
+      case 'Silver':
+        return (
+          <div>
+            <strong className="benefits-title">
+              Benefits
+            </strong>
+            <FcMindMap className="benefits-icon" />
+            <ul>
+              <li>5% discount on medical examinations for Silver users</li>
+              <li>Free membership in loyalty club</li>
+            </ul>
+          </div>
+        );
+      case 'Gold':
+        return (
+          <div>
+            <strong className="benefits-title">
+              Benefits
+            </strong>
+            <FcMindMap className="benefits-icon" />
+            <ul>
+              <li>10% discount on medical examinations for Gold users</li>
+              <li>Free shipping for online orders</li>
+              <li>Personalized offers and recommendations</li>
+            </ul>
+          </div>
+        );
+      case 'Platinum':
+        return (
+          <div>
+            <strong className="benefits-title">
+              Benefits
+            </strong>
+            <FcMindMap className="benefits-icon" />
+            <ul>
+              <li>15% discount on medical examinations for Platinum users</li>
+              <li>Special offers for Platinum users only</li>
+              <li>VIP access to exclusive events</li>
+              <li>Free gifts with every purchase</li>
+            </ul>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+  
+  const renderLoyaltyProgram = () => {
+    if (user.role === "RegisteredUser") {
+      return (
+        <div className="loyalty-program-container">
+          <div className="loyalty-program-header" onClick={handleToggleLoyaltyInfo}>
+            <FcApproval className="loyalty-program-icon" />
+            <strong>Loyalty Program</strong>
+          </div>
+          {showLoyaltyInfo && (
+            <div className="loyalty-program-info">
+              <div>
+                <label htmlFor="loyaltyPoints">
+                  Loyalty Points
+                  <FcLike className="loyalty-program-icon-right" />
+                </label>
+                <input
+                  name="loyaltyPoints"
+                  type="text"
+                  value={user.loyaltyPoints}
+                  disabled={true}
+                />
+              </div>
+              <div>
+                <label htmlFor="loyaltyCategory">
+                  Loyalty Category
+                  <FcRating className="loyalty-program-icon-right" />
+                </label>
+                <input
+                  name="loyaltyCategory"
+                  type="text"
+                  value={user.loyaltyCategory}
+                  disabled={true}
+                />
+              </div>
+              {renderLoyaltyBenefits(user.loyaltyCategory)}
+            </div>
+          )}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="profile-container1">
+      {renderLoyaltyProgram()}
+
       <form className="profile-form1" onSubmit={handleSubmit}>
         <span className="edit-button" onClick={handleEdit}>
           <FcEditImage />
         </span>
 
-        
-
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="text"
-            value={user.email}
-            disabled={true}
-          />
+          <input name="email" type="text" value={user.email} disabled={true} />
         </div>
         <div>
           <label htmlFor="name">Name</label>
@@ -149,7 +234,7 @@ const MojProfil = () => {
           />
         </div>
         <div>
-          <label htmlFor="mobilephone">Mobile phone</label>
+          <label htmlFor="mobilePhone">Mobile Phone</label>
           <input
             key={isEditing ? "edited_mobilePhone" : "user_mobilePhone"}
             name="mobilePhone"
@@ -160,7 +245,7 @@ const MojProfil = () => {
           />
         </div>
         <div>
-          <label htmlFor="jmbg">SSN</label>
+          <label htmlFor="jmbg">JMBG</label>
           <input
             key={isEditing ? "edited_jmbg" : "user_jmbg"}
             name="jmbg"
@@ -181,62 +266,15 @@ const MojProfil = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="lastQ">Date of last Questionnaire</label>
-          <input
-            name="lastQ"
-            type="text"
-            value={
-              questionnaire !== null
-                ? moment(questionnaire.date).format("DD/MM/YYYY, HH:mm")
-                : "Nema upitnika!"
-            }
-            disabled
-          />
-        </div>
-
-
         {isEditing && (
-          <div className="submit-button1-container">
-            <button className="submit-button1" type="submit" disabled={isSubmitting}>
-              Submit
+          <div className="submit-button">
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         )}
       </form>
-
-      <div className="loyalty-container">
-        <div className="loyalty-header" onClick={handleToggleLoyaltyInfo}>
-          <div className="loyalty-toggle">
-            <FcApproval className="loyalty-icon" />
-            <strong>Loyalty program</strong>
-          </div>
-        </div>
-        {showLoyaltyInfo && (
-          <div className="loyalty-info">
-            <div>
-              <label htmlFor="loyaltyPoints">Loyalty Points</label>
-              <input
-                name="loyaltyPoints"
-                type="text"
-                value={user.loyaltyPoints}
-                disabled={true}
-              />
-            </div>
-            <div>
-              <label htmlFor="loyaltyCategory">Loyalty Category</label>
-              <input
-                name="loyaltyCategory"
-                type="text"
-                value={user.loyaltyCategory}
-                disabled={true}
-              />
-            </div>
-          </div>
-        )}
-      </div>
     </div>
-    
   );
 };
 

@@ -51,59 +51,54 @@
     background-color: #f7f7f7;
   }
 
-  .loyalty-container {
-    position: relative;
-    margin-top: 20px;
-    width: 220px;
-    margin-left: 500px;
+  .loyalty-program-container {
+    position: absolute;
+    top: 0;
+    margin-left: 490px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid black;
+    margin-top: 200px;
+    background-color: #eeeeee;
+    border-radius: 5px;
   }
   
-  .loyalty-header {
-    display: flex;
-    align-items: center;
+  .loyalty-program-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .loyalty-program-icon {
+    font-size: 24px;
+    color: green;
     cursor: pointer;
   }
   
-  .loyalty-toggle {
-    display: flex;
-    align-items: center;
-  }
-  
-  .loyalty-icon {
-    margin-right: 10px;
-  }
-  
-  .loyalty-info {
+  .loyalty-program-fields {
     margin-top: 10px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    display: none;
-    margin-left: 500px;
   }
   
-  .loyalty-info.show {
-    display: block;
-  }
-  
-  .loyalty-info div {
+  .loyalty-program-fields label {
     margin-bottom: 5px;
   }
   
-  .loyalty-info label {
-    display: inline-block;
-    width: 120px;
-    font-weight: bold;
-  }
-  
-  .loyalty-info input {
-    width: 200px;
+  .loyalty-program-fields input {
     padding: 5px;
-    border: none;
-    background-color: transparent;
-    font-size: 14px;
-    color: #333;
-    pointer-events: none;
+    margin-bottom: 10px;
+    width: 100%;
   }
   
+  .loyalty-program-fields input:disabled {
+    background-color: #f7f7f7;
+  }
 
-  
+  .loyalty-program-icon-right {
+    margin-left: 5px;
+  }
+
+  .benefits-icon {
+    margin-left: 5px;
+  }

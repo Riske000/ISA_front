@@ -1,10 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, parsePath, useNavigate } from "react-router-dom";
-import "../css/logOutButton.css";
-import "../css/medicalCenters.css";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MedicalCenterDetails from "./MedicalCenterDetails";
+import "../css/medicalCenters.css";
 
 const AllCenters = (props) => {
   const [medicalCenters, setMedicalCenters] = useState([]);
@@ -14,26 +11,23 @@ const AllCenters = (props) => {
   const [sort, setSort] = useState("Ascending");
   const [numberOfCenters, setNumberOfCenters] = useState(0);
   const [sortBy, setSortBy] = useState("centerName");
-  const navigate = useNavigate();
   const [pages, setPages] = useState([]);
   const [reqParams, setReqParams] = useState({
     field: sortBy,
     pageNo: currentPage,
     pageSize: size,
     sortMode: sort,
+    centerName: "",
+    adress: "",
   });
+  const [minRating, setMinRating] = useState(0);
 
-  function count() {
-    let tempPages = [];
-    for (let i = 1; i <= Math.ceil(numberOfCenters / size); i++) {
-      //console.log(i)
-      tempPages.push(i);
-    }
-    setPages(tempPages);
-  }
-  
+  useEffect(() => {
+    fetchData();
+  }, [currentPage, reqParams]);
+
   const sortSetter = (event) => {
-    setSortBy(event.target.value)
+    setSortBy(event.target.value);
     setReqParams({
       ...reqParams,
       field: event.target.value,
@@ -41,50 +35,86 @@ const AllCenters = (props) => {
   };
 
   const sortDirSetter = (event) => {
-    setSort(event.target.value)
+    setSort(event.target.value);
     setReqParams({
       ...reqParams,
       sortMode: event.target.value,
     });
-
   };
 
-  function handleMedicalCenterClick(medicalCenter) {
+  const handleMedicalCenterClick = (medicalCenter) => {
     setSelectedMedicalCenter(medicalCenter);
-    //console.log(pages);
-  }
+  };
 
-  function setPage(currentPage) {
+  const setPage = (currentPage) => {
     setReqParams({
       ...reqParams,
       pageNo: currentPage,
     });
     setCurrentPage(currentPage);
-  }
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const token = localStorage.getItem("token");
-        const headers = {
-          Authorization: `${token}`,
-        };
-        const response = await axios.get(
-          "http://localhost:8080/api/medical/getAllSorted/",
-          { headers, params: reqParams }
-        );
-        const number = await axios.get(
-          "http://localhost:8080/api/medical/getNumberOfCenters/",
-          { headers }
-        );
-        setMedicalCenters(response.data.content);
-        setNumberOfCenters(number.data);
-        let ppp = count();
-      } catch (error) {
-        console.error(error);
-      }
+  };
+
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `${token}`,
+      };
+      const response = await axios.get(
+        "http://localhost:8080/api/medical/getAllSorted/",
+        { headers, params: reqParams }
+      );
+
+      setMedicalCenters(response.data.content);
+    } catch (error) {
+      console.error(error);
     }
+  };
+
+  const handleSearch = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `${token}`,
+      };
+      const response = await axios.get(
+        "http://localhost:8080/api/medical/search",
+        {
+          headers,
+          params: {
+            centerName: reqParams.centerName,
+            adress: reqParams.adress,
+          },
+        }
+      );
+
+      setMedicalCenters(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleFilter = () => {
+    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+      "token"
+    );
+
+    axios
+      .get("http://localhost:8080/api/medical/filter", {
+        params: { minRating: minRating },
+      })
+      .then((response) => {
+        setMedicalCenters(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleResetFilter = () => {
+    setMinRating(0);
     fetchData();
-  }, [numberOfCenters, currentPage, reqParams]);
+  };
 
   return (
     <div>
@@ -96,16 +126,57 @@ const AllCenters = (props) => {
       ) : (
         <div>
           <div className="navbar">
-            <select id="sortBy" value={sortBy} name="sortBy" onChange={sortSetter}>
+            <select
+              id="sortBy"
+              value={sortBy}
+              name="sortBy"
+              onChange={sortSetter}
+              className={"s1"}
+            >
               <option value="centerName">Center name</option>
-              <option value="adress">Adress</option>
+              <option value="adress">Address</option>
               <option value="averageRating">Average rating</option>
             </select>
-            <select id="sort" value={sort} name="sort" onChange={sortDirSetter}>
+            <select id="sort" value={sort} name="sort" onChange={sortDirSetter} className={"s1"}>
               <option value="Ascending">Ascending</option>
               <option value="Descending">Descending</option>
             </select>
           </div>
+            <div className="srch">
+            <input
+              type="text"
+              placeholder="Search by center name"
+              value={reqParams.centerName}
+              onChange={(e) =>
+                setReqParams({ ...reqParams, centerName: e.target.value })
+              }
+              className="input-search"
+            />
+            <input
+              type="text"
+              placeholder="Search by address"
+              value={reqParams.adress}
+              onChange={(e) =>
+                setReqParams({ ...reqParams, adress: e.target.value })
+              }
+              className="input-search"
+            />
+            <button onClick={handleSearch}>Search</button>
+          </div>
+
+          <div className="filt">
+           
+           Minimal Rating <input
+              type="number"
+              placeholder="Min Rating"
+              value={minRating}
+              onChange={(e) => setMinRating(parseFloat(e.target.value))}
+              className="input-search"
+            />
+            <button onClick={handleFilter}>Filter</button>
+            <button onClick={handleResetFilter}>Reset</button>
+          </div>
+
           <table>
             <thead>
               <tr>
@@ -129,7 +200,8 @@ const AllCenters = (props) => {
               ))}
             </tbody>
           </table>
-          <div className="navbar">
+
+          <div className="logout">
             {pages.map((page) => (
               <button
                 key={page}

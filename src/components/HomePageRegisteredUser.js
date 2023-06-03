@@ -32,6 +32,13 @@ const HomePageRegisteredUser = (props) => {
   return (
     <div>
       <div className="tab-bar">
+
+         <div
+          className={`tab ${activeTab === "My profile" ? "active" : ""}`}
+          onClick={() => setActiveTab("My profile")}
+        >
+          My profile
+        </div>
         <div
           className={`tab ${activeTab === "All centers" ? "active" : ""}`}
           onClick={() => setActiveTab("All centers")}
@@ -74,15 +81,12 @@ const HomePageRegisteredUser = (props) => {
         >
           Write a complaint
         </div>
-        <div
-          className={`tab ${activeTab === "My profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("My profile")}
-        >
-          My profile
-        </div>
+        
         
       </div>
       <div>
+            {activeTab === "My profile" && <MyProfile/>}
+
             {activeTab === "All centers" && <AllCenters/>}
 
             {activeTab === "History of visits" && <HistoryOfVisits/>}
@@ -97,11 +101,6 @@ const HomePageRegisteredUser = (props) => {
             
             {activeTab === "Write an complaint" && <WriteAComplaint/>}
 
-            {activeTab === "My profile" && <MyProfile/>}
-
-            {activeTab === "Work Calendar" && <Calendar/>}
-
-            {activeTab === "Add Term" && <TermForm/>}
       </div>
       <button className="button-right_bottom" onClick={onLogOutClick}>
         Log out

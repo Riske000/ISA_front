@@ -1,43 +1,88 @@
-table {
-  border-collapse: separate;
+.container {
   width: 80%;
   margin: auto;
   font-family: "Open Sans", sans-serif;
-  font-size: 14px;
   margin-top: 20px;
 }
-th,
-td {
-  box-sizing: border-box;
-  border: 1px solid #dddddd;
-  width: 25%;
-  min-height: 30px;
-  text-align: center;
-  padding: 8px;
-  display: table-cell;
-}
-tr {
-  display: table-row;
-}
-td {
-  border-radius: 10px;
-  background-color: #f8f8f8;
-  transition: all 0.2s ease-in-out;
-}
-td:hover {
-  background-color: #efefef;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-}
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-th {
-  background-color: #4caf50;
-  color: white;
-  border-radius: 10px;
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  
 }
 
-footer {
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background-color: #5b94c0;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 280px;
+}
+
+.srch {
+  margin-left: 590px;
+}
+
+.filt {
+  margin-left: 650px;
+}
+
+.input-search,
+.selectt {
+  width: 200px;
+  padding: 8px 12px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.selectt {
+  appearance: none;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5b94c0;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5b94c0;
+}
+
+.footer {
   position: fixed;
   left: 25%;
   right: 25%;
@@ -46,10 +91,6 @@ footer {
   background-color: rgba(128, 128, 128, 0.5);
   color: white;
   text-align: center;
-}
-
-p {
-  font-size: 20px;
 }
 
 .p-center {
@@ -63,21 +104,18 @@ p {
   font-weight: bold;
   font-size: 25px;
 }
-.navbar {
-  margin: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .nav {
-  background-color: rgb(120, 120, 120); /* Add a background color */
-  border: 1px solid black; /* Add a border */
-  height: 0.05px;
-  width: 0.05px;
-  padding: 1.5%;
-  margin: 0px;
+  background-color: rgb(120, 120, 120);
+  border: 1px solid black;
+  padding: 8px;
+  margin: 0;
   font-size: 14px;
+  cursor: pointer;
+}
+
+.s1 {
+  margin-left: 5px;
 }
 
 .nav.active {
@@ -85,18 +123,7 @@ p {
   font-size: 16px;
 }
 
-.selectt {
-  width: 150px;
-  padding: 8px 12px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  appearance: none;
-}
-
 .selectt:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #4caf50;
 }
