@@ -17,6 +17,7 @@ import TermForm from "./components/TermForm";
 import AdminsCenterDetails from "./components/AdminsCenterDetails";
 import HomePageAdminCenter from "./components/HomePageAdminCenter";
 import MyProfile from "./components/MyProfile";
+import NewTerm from "./components/NewTerm";
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/homePageAdminCenter" element={<HomePageAdminCenter />} />
         <Route path="/adminsCenter" element={<AdminsCenterDetails />} />
         <Route path="/myProfile" element={<MyProfile />} />
+        <Route path="/newTerm" element={<NewTerm />} />
       </Routes>
   );
 }

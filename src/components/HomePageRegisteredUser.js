@@ -14,6 +14,7 @@ import HistoryOfVisits from "./HistoryOfVisits";
 import QRcodes from "./QRcodes";
 import Calendar from "./Calendar";
 import TermForm from "./TermForm";
+import NewTerm from "./NewTerm";
 
 const token = localStorage.getItem("token");
 
@@ -44,6 +45,12 @@ const HomePageRegisteredUser = (props) => {
           onClick={() => setActiveTab("All centers")}
         >
           All centers
+        </div>
+        <div
+          className={`tab ${activeTab === "Reserve Term" ? "active" : ""}`}
+          onClick={() => setActiveTab("Reserve Term")}
+        >
+          New Term
         </div>
         <div
           className={`tab ${activeTab === "History of visits" ? "active" : ""}`}
@@ -88,6 +95,8 @@ const HomePageRegisteredUser = (props) => {
             {activeTab === "My profile" && <MyProfile/>}
 
             {activeTab === "All centers" && <AllCenters/>}
+
+            {activeTab === "Reserve Term" && <NewTerm/>}
 
             {activeTab === "History of visits" && <HistoryOfVisits/>}
 
