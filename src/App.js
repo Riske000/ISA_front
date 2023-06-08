@@ -19,6 +19,7 @@ import HomePageAdminCenter from "./components/HomePageAdminCenter";
 import MyProfile from "./components/MyProfile";
 import NewTerm from "./components/NewTerm";
 import ChangePassword from "./components/ChangePassword";
+import HomePage from "./components/HomePage";
 
 
 
@@ -29,7 +30,8 @@ function App() {
 
   return (
       <Routes >
-        <Route index path="/" element={<LoginForm />} />
+        <Route index path="/" element={<HomePage />} />
+        <Route index path="/login" element={<LoginForm />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/homePageRegisteredUser" element={<HomePageRegisteredUser />} />
         <Route path="/homePageAdmin" element={<HomePageAdmin />} />

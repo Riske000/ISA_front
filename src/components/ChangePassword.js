@@ -14,6 +14,7 @@ const ChangePassword = (props) => {
     navigate("/");
   };
 
+
   const handleChangePassword = async () => {
     try {
       const passwordData = {
@@ -34,6 +35,7 @@ const ChangePassword = (props) => {
         }
       );
 
+      console.log(response);
       if (response.ok) {
         localStorage.setItem("isFirstLogin", "false");
         navigate("/homePageAdminCenter")

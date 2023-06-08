@@ -130,41 +130,6 @@ const AdminsCenterDetails = () => {
       });
   };
 
-  const handleChangePassword = async () => {
-    try {
-      const email = localStorage.getItem("email");
-      const oldPassword = ""; // Get the old password from the user input
-      const newPassword = ""; // Get the new password from the user input
-  
-      // Make an API call to the changePassword endpoint
-      const response = await fetch("/api/changePassword", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          oldPassword: oldPassword,
-          newPassword: newPassword,
-        }),
-      });
-  
-      if (response.ok) {
-        // Password successfully changed
-        // You can handle the success case here (e.g., show a success message)
-      } else if (response.status === 401) {
-        // Incorrect old password
-        // You can handle the error case here (e.g., show an error message)
-      } else {
-        // Other error occurred
-        // You can handle the error case here (e.g., show an error message)
-      }
-    } catch (error) {
-      // Handle any potential errors from the API call
-      // You can handle the error case here (e.g., show an error message)
-    }
-  };
-
   const handleWorkingHoursSubmit = () => {
     const token = localStorage.getItem("token");
     const medicalCenterId = medicalCenter.id;
