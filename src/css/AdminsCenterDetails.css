@@ -1,78 +1,86 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 150px;
-  }
-  
-  .center-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 20%;
-    margin-right: 20px;
-    border-radius: 5%;
-    background-color: #f2f2f2; 
-    border-color: black;
-  }
-  
-  .working-hours-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 15%;
-    height: 10%;
-    border-radius: 5%;
-    background-color: #f2f2f2;
-    border-color: black;
-  }
-  
-  .natpis{
-    font-size: 10px;
-    color: red;
-    margin-left: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
 
-  .working-hours-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .working-hours-title {
-    font-weight: bold;
-  }
-  
-  .edit-icon {
-    font-size: 24px;
-  }
-  .working-hours-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-  }
-  
-  .working-hours-title {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .edit-icon {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .editable-fields {
-    margin-bottom: 10px;
-  }
-  
-  .editable-fields input {
-    margin-bottom: 5px;
-  }
-  
-  .active {
-    color: blue;
-  }
-    
-  
-  
-  
+.center-container,
+.working-hours-container,
+.administrators-container {
+  width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.center-header,
+.working-hours-header,
+.administrators-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.center-title,
+.working-hours-title,
+.administrators-title {
+  font-size: 18px;
+  font-weight: bold;
+  flex-grow: 1;
+  color: #000;
+}
+
+.edit-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.edit-icon.active {
+  color: #333;
+}
+
+.editable-fields {
+  margin-top: 10px;
+}
+
+.editable-fields p {
+  margin-bottom: 5px;
+}
+
+.editable-fields input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.non-editable-fields p {
+  margin-bottom: 5px;
+}
+
+.working-hours-container .non-editable-fields p {
+  margin-bottom: 10px;
+}
+
+.administrators-container .administrators-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.administrators-container .administrators-list li {
+  margin-bottom: 5px;
+}
+
+.loading-container {
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}

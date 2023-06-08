@@ -20,6 +20,8 @@ import MyProfile from "./components/MyProfile";
 import NewTerm from "./components/NewTerm";
 import Questionnaire from "./components/Questionnaire";
 import AllCenters from "./components/AllCenters";
+import ChangePassword from "./components/ChangePassword";
+
 
 
 
@@ -30,7 +32,8 @@ function App() {
 
   return (
       <Routes >
-        <Route index path="/" element={<LoginForm />} />
+        <Route index path="/" element={<AllCenters />} />
+        <Route index path="/login" element={<LoginForm />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/homePageRegisteredUser" element={<HomePageRegisteredUser />} />
         <Route path="/homePageAdmin" element={<HomePageAdmin />} />
@@ -41,7 +44,7 @@ function App() {
         <Route path="/myProfile" element={<MyProfile />} />
         <Route path="/newTerm" element={<NewTerm />} />
         <Route path="/questionnaire" element={<Questionnaire />} />
-        <Route path="/allCenters" element={<AllCenters />} />
+        <Route path="/changePassword" element={<ChangePassword />} />
       </Routes>
   );
 }

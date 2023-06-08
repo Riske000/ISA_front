@@ -56,13 +56,9 @@ const AllCenters = (props) => {
 
   const fetchData = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const headers = {
-        Authorization: `${token}`,
-      };
       const response = await axios.get(
-        "http://localhost:8080/api/medical/getAllSorted/",
-        { headers, params: reqParams }
+        "http://localhost:8080/api/medical/getAllSorted",
+        { params: reqParams }
       );
 
       setMedicalCenters(response.data.content);
@@ -73,14 +69,9 @@ const AllCenters = (props) => {
 
   const handleSearch = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const headers = {
-        Authorization: `${token}`,
-      };
       const response = await axios.get(
         "http://localhost:8080/api/medical/search",
         {
-          headers,
           params: {
             centerName: reqParams.centerName,
             adress: reqParams.adress,
@@ -95,10 +86,6 @@ const AllCenters = (props) => {
   };
 
   const handleFilter = () => {
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "token"
-    );
-
     axios
       .get("http://localhost:8080/api/medical/filter", {
         params: { minRating: minRating },
@@ -131,18 +118,24 @@ const AllCenters = (props) => {
               value={sortBy}
               name="sortBy"
               onChange={sortSetter}
-              className={"s1"}
+              className="s1"
             >
               <option value="centerName">Center name</option>
               <option value="adress">Address</option>
               <option value="averageRating">Average rating</option>
             </select>
-            <select id="sort" value={sort} name="sort" onChange={sortDirSetter} className={"s1"}>
+            <select
+              id="sort"
+              value={sort}
+              name="sort"
+              onChange={sortDirSetter}
+              className="s1"
+            >
               <option value="Ascending">Ascending</option>
               <option value="Descending">Descending</option>
             </select>
           </div>
-            <div className="srch">
+          <div className="srch">
             <input
               type="text"
               placeholder="Search by center name"
@@ -165,8 +158,8 @@ const AllCenters = (props) => {
           </div>
 
           <div className="filt">
-           
-           Minimal Rating <input
+            Minimal Rating
+            <input
               type="number"
               placeholder="Min Rating"
               value={minRating}
