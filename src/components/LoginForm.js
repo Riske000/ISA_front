@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
   const onLoginClickHandler = async (event) => {
     event.preventDefault();
-
+  
     fetch("http://localhost:8080/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,8 +30,7 @@ const LoginForm = (props) => {
       .then(async (data) => {
         const token = `Bearer ${data.token}`;
         localStorage.setItem("token", token);
-
-        //console.log(`Bearer ${localStorage.getItem("token")}`);
+  
         fetch(
           `http://localhost:8080/api/user/getCurrentUser/${loginDTO.email}`,
           {
@@ -46,18 +45,22 @@ const LoginForm = (props) => {
             return response.json();
           })
           .then((data) => {
-            const currentUser = JSON.stringify(data)
-
+            const currentUser = JSON.stringify(data);
             localStorage.setItem("currentUser", currentUser);
             localStorage.setItem("userType", data.role);
             localStorage.setItem("userId", data.id);
+            localStorage.setItem("isFirstLogin", data.firstLogin);
+  
             if (data.role === "RegisteredUser") {
               navigate("/homePageRegisteredUser");
             }
             if (data.role === "SystemAdministrator") {
               navigate("/homePageAdmin");
             }
-            if (data.role === "CenterAdministrator") {
+            if (data.role === "CenterAdministrator" && String(data.firstLogin) === "true") {
+              navigate("/changePassword");
+            }
+            if (data.role === "CenterAdministrator" && String(data.firstLogin) === "false") {
               navigate("/homePageAdminCenter");
             }
           });

@@ -18,6 +18,7 @@ import AdminsCenterDetails from "./components/AdminsCenterDetails";
 import HomePageAdminCenter from "./components/HomePageAdminCenter";
 import MyProfile from "./components/MyProfile";
 import NewTerm from "./components/NewTerm";
+import ChangePassword from "./components/ChangePassword";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/adminsCenter" element={<AdminsCenterDetails />} />
         <Route path="/myProfile" element={<MyProfile />} />
         <Route path="/newTerm" element={<NewTerm />} />
+        <Route path="/changePassword" element={<ChangePassword />} />
       </Routes>
   );
 }
