@@ -1,0 +1,138 @@
+
+.center-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.533);
+    margin-bottom: 20px;
+  }
+  
+  .center-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .center-info span {
+    margin-right: -50px;
+  }
+
+  .label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  p.datetime {
+    display: inline-block;
+    border: 1px solid #000;
+    font-weight: bold;
+  }
+
+  .center-info-container {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+  
+  .dateTime-container {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+  
+  .center-info-container span {
+    display: block;
+  }
+  
+
+  .value {
+    margin-left: 5px;
+  }
+  
+  .questionnaire-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 50px;
+  }
+  
+  
+  .question {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .question label {
+    margin-right: 10px;
+  }
+
+  .question label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .question label input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .question label span {
+    margin-left: 5px;
+  }
+
+  .go-back-button {
+    margin-left:1350px;
+    margin-top: 540px;
+  }
+  
+.nasl {
+    margin-left: 80px;
+    margin-top: -500px;
+}
+
+  .submit-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .datumm {
+    margin-left: -1210px;
+  }
+
+  .successs-message {
+    display: flex;
+    align-items: center;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 400px;
+    margin-left: 540px;
+    border-radius: 2px;
+    margin-top:100px;
+  }
+  
+  .successs-icon {
+    color: #3c763d;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+
+  .confirm-button {
+    margin-left: 670px;
+    background-color: #98c286;
+    height: 40px;
+    margin-top: -250px;
+  }

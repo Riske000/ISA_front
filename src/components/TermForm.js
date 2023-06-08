@@ -118,6 +118,11 @@ const TermForm = () => {
     return true;
   };
 
+  const filterPassedDates = (date) => {
+    const currentDate = new Date();
+    return date >= currentDate;
+  };
+
   return (
     <div>
     <h2>Blood donation terms</h2>
@@ -138,6 +143,7 @@ const TermForm = () => {
           timeIntervals={15}
           dateFormat="dd/MM/yyyy HH:mm"
           filterTime={filterTime}
+          filterDate={filterPassedDates}
           className="date"
         />
         {!isWithinWorkingHours() && (

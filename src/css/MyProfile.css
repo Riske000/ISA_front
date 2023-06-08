@@ -20,11 +20,11 @@
     border-radius: 3px;
   }
   
-  button.submit-button1 {
+  button.submitic-button1 {
     margin-top: 10px;
   }
   
-  button.submit-button1  {
+  button.submitic-button1  {
     padding: 9px 7px;
     background-color: rgb(98, 197, 96);
     color: white; 
@@ -32,7 +32,7 @@
     cursor: pointer;
   }
   
-  button.submit-button1 button:disabled {
+  button.submitic-button1 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }

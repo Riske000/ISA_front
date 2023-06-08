@@ -18,6 +18,8 @@ import AdminsCenterDetails from "./components/AdminsCenterDetails";
 import HomePageAdminCenter from "./components/HomePageAdminCenter";
 import MyProfile from "./components/MyProfile";
 import NewTerm from "./components/NewTerm";
+import Questionnaire from "./components/Questionnaire";
+import AllCenters from "./components/AllCenters";
 
 
 
@@ -38,6 +40,8 @@ function App() {
         <Route path="/adminsCenter" element={<AdminsCenterDetails />} />
         <Route path="/myProfile" element={<MyProfile />} />
         <Route path="/newTerm" element={<NewTerm />} />
+        <Route path="/questionnaire" element={<Questionnaire />} />
+        <Route path="/allCenters" element={<AllCenters />} />
       </Routes>
   );
 }

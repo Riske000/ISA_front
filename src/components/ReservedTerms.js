@@ -75,7 +75,7 @@ const ReservedTerms = () => {
             {reservedTerms.map((term) => (
               <tr key={term.id}>
                 <td>{term.medicalCenter.centerName} </td>
-                <td>{moment(term.dateOfTerm).format("DD/MM/YYYY, h:mm")}</td>
+                <td>{moment(term.dateOfTerm).subtract(2, "hours").format("DD/MM/YYYY, h:mm")}</td>
                 <td>{term.duration} minutes</td>
                 <td>
                   <button id={term.id} onClick={handleCancelTerm}>
@@ -89,7 +89,7 @@ const ReservedTerms = () => {
       )}
       <footer>
         <p>
-          If u dont come to reserved term u will get penalty. See My penalties tab for more information.
+          Not comming to a reserved term will bring you penalty. See My penalties tab for more information.
         </p>
       </footer>
     </div>

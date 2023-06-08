@@ -267,8 +267,8 @@ const MojProfil = () => {
           />
         </div>
         {isEditing && (
-          <div className="submit-button">
-            <button type="submit" disabled={isSubmitting}>
+          <div className="submit-buttonic">
+            <button type="submitic" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
