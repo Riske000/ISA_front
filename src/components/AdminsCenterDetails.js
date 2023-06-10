@@ -29,9 +29,11 @@ const AdminsCenterDetails = () => {
         if (data.medicalCenterId) {
           fetchMedicalCenter(data.medicalCenterId);
           fetchAdministrators(data.medicalCenterId);
+          fetchRating(data.medicalCenterId); 
         } else if (data.medicalCenter && data.medicalCenter.id) {
           fetchMedicalCenter(data.medicalCenter.id);
           fetchAdministrators(data.medicalCenter.id);
+          fetchRating(data.medicalCenter.id);
         }
       })
       .catch((error) => {
@@ -56,12 +58,28 @@ const AdminsCenterDetails = () => {
         setCenterName(data.centerName);
         setAdress(data.adress);
         setDescription(data.description);
-        setRating(data.averageRating);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+  const fetchRating = (medicalCenterId) => {{
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:8080/api/medical/medical-center/${medicalCenterId}/average-rating`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setRating(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }}
 
   const fetchAdministrators = (medicalCenterId) => {
     const token = localStorage.getItem("token");
