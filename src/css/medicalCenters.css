@@ -46,6 +46,13 @@ tr:nth-child(even) {
   margin-left: 650px;
 }
 
+.uloguj {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  background-color: rgba(0, 128, 0, 0.46);
+}
+
 .input-search,
 .selectt {
   width: 200px;
@@ -126,4 +133,10 @@ button:hover {
 .selectt:focus {
   outline: none;
   border-color: #4caf50;
+}
+
+.logout {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

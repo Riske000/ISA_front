@@ -1,0 +1,52 @@
+.bar-series rect {
+    width: 20px !important; 
+  }
+  
+  .bar-series text {
+    fill: white !important; 
+    font-size: 12px !important; 
+  }
+
+  .graph-container {
+    border: 1px solid black;
+    padding: 10px;
+    max-width: fit-content;
+    margin-top: 50px;
+    margin-left: 50px;
+    background-color: rgb(238, 240, 240);
+  }
+  
+  .graph-tooltip {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    pointer-events: none;
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+.bar-band_aids {
+  fill: #ff00009c; 
+}
+
+.bar-dressings {
+  fill: #0ebe0e83;
+}
+
+.bar-needles {
+  fill: #1bcfeb7d; 
+}
+
+.analytics-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+}
+
+
+  
+  

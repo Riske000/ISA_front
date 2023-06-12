@@ -76,12 +76,7 @@ const HomePageRegisteredUser = (props) => {
         >
           My penalties
         </div>
-        <div
-          className={`tab ${activeTab === "Questionnaire" ? "active" : ""}`}
-          onClick={() => setActiveTab("Questionnaire")}
-        >
-          Questionnaire
-        </div>
+        
         <div
           className={`tab ${activeTab === "Write an complaint" ? "active" : ""}`}
           onClick={() => setActiveTab("Write an complaint")}
@@ -106,7 +101,6 @@ const HomePageRegisteredUser = (props) => {
 
             {activeTab === "My penalties" && <MyPenalties/>}
 
-            {activeTab === "Questionnaire" && <Questionnaire toProfile={toProfile}/>}
             
             {activeTab === "Write an complaint" && <WriteAComplaint/>}
 

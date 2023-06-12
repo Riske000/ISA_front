@@ -89,7 +89,7 @@ const ReservedTerms = () => {
       )}
       <footer>
         <p>
-          Not comming to a reserved term will bring you penalty. See My penalties tab for more information.
+          Not comming to a reserved term will bring you penalties. See My penalties tab for more information.
         </p>
       </footer>
     </div>

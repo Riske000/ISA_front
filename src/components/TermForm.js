@@ -69,7 +69,7 @@ const TermForm = () => {
         setDateOfTerm(null);
         setDuration("");
         setStatusOfTerm("");
-        setMedicalCenterId("");
+        //setMedicalCenterId("");
       })
       .catch((error) => {
         console.error(error);

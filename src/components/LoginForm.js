@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
+import '../css/Login.css';
+import { FcBusinessman, FcKey } from 'react-icons/fc';
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
@@ -75,24 +77,32 @@ const LoginForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="formica">
       <form onSubmit={onLoginClickHandler}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input onChange={handleChange} name="email" type="text" required />
+      <div>
+        <label htmlFor="email">
+          <FcBusinessman className="icon" size={30} />
+          Email
+        </label>
+        <input onChange={handleChange} name="email" type="text" required style={{ width: "100%" }}/>
+      </div>
+      <div>
+        <label htmlFor="password">
+          <FcKey className="icon" size={30}/>
+          Password
+        </label>
+        <input
+          onChange={handleChange}
+          name="password"
+          type="password"
+          className="sifr"
+          required
+          style={{ width: "92%" }}
+        />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={handleChange}
-            name="password"
-            type="password"
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-          <button onClick={onRegistrateClickHandler}>Dont have acount?</button>
+        <button type="submit" class="submit-button login-button">Login</button>
+          <button type="submit" class="submit-button register-button" onClick={onRegistrateClickHandler}>Dont have acount?</button>
         </div>
       </form>
     </div>

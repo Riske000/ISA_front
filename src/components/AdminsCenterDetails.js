@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FcEngineering } from "react-icons/fc";
+import { FcEngineering, FcBusinessman } from "react-icons/fc";
 import "../css/AdminsCenterDetails.css";
 
 const AdminsCenterDetails = () => {
@@ -9,6 +9,7 @@ const AdminsCenterDetails = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [centerName, setCenterName] = useState("");
+  const [isEditable, setIsEditable] = useState(false);
   const [adress, setAdress] = useState("");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("");
@@ -196,99 +197,117 @@ const AdminsCenterDetails = () => {
   }
 
   return (
-    <div className="container">
-      <div className="center-container">
-        <div className="center-header">
-          <p className="center-title">Medical Center</p>
-          <FcEngineering
-            className={`edit-icon ${isCenterEditable ? "active" : ""}`}
-            onClick={handleCenterEditClick}
-          />
-        </div>
-        {isCenterEditable ? (
-          <div className="editable-fields">
-            <p>Name:</p>
-            <input
-              type="text"
-              value={centerName}
-              onChange={handleCenterNameChange}
-            />
-            <p>Address:</p>
-            <input
-              type="text"
-              value={adress}
-              onChange={handleAdressChange}
-            />
-            <p>Description:</p>
-            <input
-              type="text"
-              value={description}
-              onChange={handleDescriptionChange}
-            />
-            <p>Rating:</p>
-            <input
-              type="text"
-              value={rating}
-              onChange={handleRatingChange}
-            />
-            <button onClick={handleCenterSubmit}>Submit</button>
+        <div className="container">
+          <div className="top-container">
+          <div className="center-container">
+            <div className="center-header">
+              <div className="title-wrapper">
+                <p className="center-title">Medical Center</p>
+                <FcEngineering
+                  className={`edit-icon ${isCenterEditable ? "active" : ""}`}
+                  onClick={handleCenterEditClick}
+                />
+              </div>
+            </div>
+            {isCenterEditable ? (
+              <div className="editable-fields">
+                <div className="field-group">
+                  <p className="field-label">Name:</p>
+                  <input
+                    type="text"
+                    value={centerName}
+                    onChange={handleCenterNameChange}
+                  />
+                </div>
+                <div className="field-group">
+                  <p className="field-label">Address:</p>
+                  <input
+                    type="text"
+                    value={adress}
+                    onChange={handleAdressChange}
+                  />
+                </div>
+                <div className="field-group">
+                  <p className="field-label">Description:</p>
+                  <input
+                    type="text"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                  />
+                </div>
+                <div className="field-group">
+                  <p className="field-label">Rating:</p>
+                  <input
+                    type="text"
+                    value={rating}
+                    onChange={handleRatingChange}
+                  />
+                </div>
+                <button onClick={handleCenterSubmit}>Submit</button>
+              </div>
+            ) : (
+              <div className="non-editable-fields">
+                <p>Name: {centerName}</p>
+                <p>Address: {adress}</p>
+                <p>Description: {description}</p>
+                <p>Rating: {rating}</p>
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="non-editable-fields">
-            <p>Name: {centerName}</p>
-            <p>Address: {adress}</p>
-            <p>Description: {description}</p>
-            <p>Rating: {rating}</p>
-          </div>
-        )}
-      </div>
 
-      <div className="working-hours-container">
-        <div className="working-hours-header">
-          <p className="working-hours-title">Working Hours</p>
-          <FcEngineering
-            className={`edit-icon ${isWorkingHoursEditable ? "active" : ""}`}
-            onClick={handleWorkingHoursEditClick}
-          />
-        </div>
-        {isWorkingHoursEditable ? (
-          <div className="editable-fields">
-            <p>Start Time:</p>
-            <input
-              type="text"
-              value={startTime}
-              onChange={handleStartTimeChange}
+
+        <div className="working-hours-container">
+          <div className="working-hours-header">
+            <p className="working-hours-title">Working Hours</p>
+            <FcEngineering
+              className={`edit-icon ${isWorkingHoursEditable ? "active" : ""}`}
+              onClick={handleWorkingHoursEditClick}
             />
-            <p>End Time:</p>
-            <input
-              type="text"
-              value={endTime}
-              onChange={handleEndTimeChange}
-            />
-            <button onClick={handleWorkingHoursSubmit}>Submit</button>
           </div>
-        ) : (
-          <div className="non-editable-fields">
-            <p>Start Time: {startTime}</p>
-            <p>End Time: {endTime}</p>
-          </div>
+          {isWorkingHoursEditable ? (
+            <div className="editable-fields">
+              <p>Start Time:</p>
+              <input
+                type="time"
+                value={startTime}
+                onChange={handleStartTimeChange}
+              />
+              <p>End Time:</p>
+              <input
+                type="time"
+                value={endTime}
+                onChange={handleEndTimeChange}
+              />
+              <button onClick={handleWorkingHoursSubmit}>Submit</button>
+            </div>
+          ) : (
+            <div className="non-editable-fields">
+              <p>Start Time: {startTime}</p>
+              <p>End Time: {endTime}</p>
+            </div>
+          )}
+          {!isEditable && (
+          <h1 className="natpis">*Working days only!</h1>
         )}
+        </div>
       </div>
 
       <div className="administrators-container">
         <div className="administrators-header">
-          <p className="administrators-title">Administrators</p>
+        <p className="administrators-title">
+          <FcBusinessman size={30} /> Administrators
+        </p>
         </div>
         <ul className="administrators-list">
-        {administrators && Array.isArray(administrators) ? (
-  <ul className="administrators-list">
-    {administrators.map((administrator) => (
-      <li key={administrator.id}>{administrator.name}</li>
-    ))}
-  </ul>
-) : (
-  <p>No administrators found.</p>
-)}
+          {administrators && Array.isArray(administrators) ? (
+            <ul className="administrators-list">
+              {administrators.map((administrator) => (
+                <li key={administrator.id}>{administrator.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No administrators found.</p>
+          )}
         </ul>
       </div>
     </div>
@@ -296,3 +315,5 @@ const AdminsCenterDetails = () => {
 };
 
 export default AdminsCenterDetails;
+
+

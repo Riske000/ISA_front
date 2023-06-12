@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MedicalCenterDetails from "./MedicalCenterDetails";
+import { useNavigate } from "react-router-dom";
 import "../css/medicalCenters.css";
 
 const AllCenters = (props) => {
+  const navigate = useNavigate();
   const [medicalCenters, setMedicalCenters] = useState([]);
   const [selectedMedicalCenter, setSelectedMedicalCenter] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +23,7 @@ const AllCenters = (props) => {
     adress: "",
   });
   const [minRating, setMinRating] = useState(0);
+  const currentUser = localStorage.getItem("currentUser");
 
   useEffect(() => {
     fetchData();
@@ -103,6 +106,10 @@ const AllCenters = (props) => {
     fetchData();
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div>
       {selectedMedicalCenter ? (
@@ -170,6 +177,7 @@ const AllCenters = (props) => {
             <button onClick={handleResetFilter}>Reset</button>
           </div>
 
+
           <table>
             <thead>
               <tr>
@@ -204,6 +212,8 @@ const AllCenters = (props) => {
                 {page}
               </button>
             ))}
+              {currentUser ? null : <button onClick={handleLogin} className="uloguj">Login</button>}
+
           </div>
         </div>
       )}
@@ -212,3 +222,6 @@ const AllCenters = (props) => {
 };
 
 export default AllCenters;
+
+
+

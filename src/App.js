@@ -17,6 +17,7 @@ import Questionnaire from "./components/Questionnaire";
 import AllCenters from "./components/AllCenters";
 import ChangePassword from "./components/ChangePassword";
 import ProtectedRoute from "./auth/AuthGuard";
+import Analytics from "./components/Analytics";
 
 function App() {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/newTerm" element={<NewTerm />} />
         <Route path="/questionnaire" element={<Questionnaire />} />
         <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Route>
     </Routes>
   );

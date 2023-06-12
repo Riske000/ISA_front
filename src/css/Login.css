@@ -1,0 +1,33 @@
+.submit-button.login-button,
+.submit-button.register-button {
+  margin-right: 10px;
+  width: 170px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 75px;
+}
+
+  
+.submit-button.login-button{
+    background-color: rgba(6, 148, 6, 0.477);
+}
+
+.submit-button.register-button {
+    background-color: rgba(255, 0, 0, 0.312);
+}
+
+.formica {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 180px;
+    height: 300px; 
+    border-color: black;
+  }
+
+  .sifr {
+    width: 50px;
+  }
