@@ -19,6 +19,8 @@ import ChangePassword from "./components/ChangePassword";
 import ProtectedRoute from "./auth/AuthGuard";
 import TermDetails from "./components/TermDetails";
 import AdminReviewTerm from "./components/AdminReviewTerm";
+import RateCenter from "./components/RateCenter";
+import VisitedCenters from "./components/VisitedCenters";
 
 function App() {
   const navigate = useNavigate();
@@ -43,6 +45,8 @@ function App() {
         <Route path="/questionnaire" element={<Questionnaire />} />
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/termReview/:termId/form" element={<AdminReviewTerm />} />
+        <Route path="/rate" element={<RateCenter />} />
+        <Route path="/visitedCenters" element={<VisitedCenters />} />
       </Route>
     </Routes>
   );
