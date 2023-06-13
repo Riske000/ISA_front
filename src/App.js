@@ -17,6 +17,8 @@ import Questionnaire from "./components/Questionnaire";
 import AllCenters from "./components/AllCenters";
 import ChangePassword from "./components/ChangePassword";
 import ProtectedRoute from "./auth/AuthGuard";
+import TermDetails from "./components/TermDetails";
+import AdminReviewTerm from "./components/AdminReviewTerm";
 
 function App() {
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ function App() {
         <Route path="/homePageRegisteredUser" element={<HomePageRegisteredUser />} />
         <Route path="/homePageAdmin" element={<HomePageAdmin />} />
         <Route path="/calendar" element={<MyCalendar />} />
+        <Route path="/termDetails/:termId" element={<TermDetails />} />
         <Route path="/addTerm" element={<TermForm />} />
         <Route path="/homePageAdminCenter" element={<HomePageAdminCenter />} />
         <Route path="/adminsCenter" element={<AdminsCenterDetails />} />
@@ -39,6 +42,7 @@ function App() {
         <Route path="/newTerm" element={<NewTerm />} />
         <Route path="/questionnaire" element={<Questionnaire />} />
         <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/termReview/:termId/form" element={<AdminReviewTerm />} />
       </Route>
     </Routes>
   );

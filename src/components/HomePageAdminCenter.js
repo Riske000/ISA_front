@@ -29,6 +29,10 @@ const HomePageAdminCenter = () => {
   const [newPassword, setNewPassword] = useState("");
   const [visitedUsers, setVisitedUsers] = useState([]);
   const [pastTakenTerms, setPastTakenTerms] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const [searchSurname, setSearchSurname] = useState("");
+  const [sortOption, setSortOption] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const onLogOutClick = () => {
     localStorage.clear();
@@ -94,6 +98,30 @@ const HomePageAdminCenter = () => {
 
     fetchPastTakenTerms();
   }, [currentUser.medicalCenter.id]);
+
+  const handleSearch = () => {
+    const filteredResults = pastTakenTerms.filter((term) => {
+      const nameMatch = term.user.name.toLowerCase().includes(searchName.toLowerCase());
+      const surnameMatch = term.user.surname.toLowerCase().includes(searchSurname.toLowerCase());
+      return nameMatch && surnameMatch;
+    });
+
+    setSearchResults(filteredResults);
+  };
+
+  const handleSort = () => {
+    let sortedResults = [...searchResults];
+
+    if (sortOption === "name") {
+      sortedResults.sort((a, b) => a.user.name.localeCompare(b.user.name));
+    } else if (sortOption === "surname") {
+      sortedResults.sort((a, b) => a.user.surname.localeCompare(b.user.surname));
+    } else if (sortOption === "date") {
+      sortedResults.sort((a, b) => new Date(a.dateOfTerm) - new Date(b.dateOfTerm));
+    }
+
+    setSearchResults(sortedResults);
+  };
 
   const toProfile = () => {
     setActiveTab("My profile");
@@ -166,26 +194,52 @@ const HomePageAdminCenter = () => {
             {activeTab === "Add Term" && <TermForm />}
 
             {activeTab !== "My profile" && activeTab !== "My Medical Center" && activeTab !== "Work Calendar" && activeTab !== "Add Term" && (
-              <table> 
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pastTakenTerms.map((term) => (
-                    <tr key={term.id}>
-                      <td>{new Date(term.dateOfTerm).toLocaleDateString()}</td>
-                      <td>{new Date(term.dateOfTerm).toLocaleTimeString()}</td>
-                      <td>{term.user.name}</td>
-                      <td>{term.user.surname}</td>
+              <div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Search by name"
+                    value={searchName}
+                    onChange={(e) => setSearchName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Search by surname"
+                    value={searchSurname}
+                    onChange={(e) => setSearchSurname(e.target.value)}
+                  />
+                  <button onClick={handleSearch}>Search</button>
+                </div>
+                <div>
+                  <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                    <option value="">Sort by</option>
+                    <option value="name">Name</option>
+                    <option value="surname">Surname</option>
+                    <option value="date">Date</option>
+                  </select>
+                  <button onClick={handleSort}>Sort</button>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Name</th>
+                      <th>Surname</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                  {searchResults.map((term) => (
+  <tr key={term.id} onClick={() => navigate(`/termDetails/${term.id}`)}>
+    <td>{new Date(term.dateOfTerm).toLocaleDateString()}</td>
+    <td>{new Date(term.dateOfTerm).toLocaleTimeString()}</td>
+    <td>{term.user.name}</td>
+    <td>{term.user.surname}</td>
+  </tr>
+))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </div>
 

@@ -108,8 +108,11 @@ import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import enUS from 'date-fns/locale/en-US';
+import { useNavigate } from 'react-router-dom';
 import '../css/Calendar.css'; 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useLocation } from 'react-router-dom';
+
 
 const locales = {
   'en-US': enUS,
@@ -126,6 +129,7 @@ const localizer = dateFnsLocalizer({
 const MyCalendar = () => {
   const [events, setEvents] = useState([]);
   const [medicalCenterId, setMedicalCenterId] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -167,6 +171,7 @@ const MyCalendar = () => {
             startDate.setHours(startDate.getHours() - 2); 
             endDate.setHours(endDate.getHours() - 2); 
             return {
+              id: term.id,
               title: term.statusOfTerm === "Free" ? "Free" : "Taken",
               start: startDate,
               end: endDate,
@@ -184,6 +189,12 @@ const MyCalendar = () => {
 
     fetchEvents();
   }, [medicalCenterId]);
+
+  const handleEventClick = (event) => {
+    if (event.status === "Taken" ||  event.start < new Date()) {
+      navigate(`/termDetails/${event.id}`);
+    }
+  };
 
   return (
     <Calendar
@@ -209,9 +220,11 @@ const MyCalendar = () => {
           style,
         };
       }}
+      onSelectEvent={handleEventClick} // Call the handleEventClick function on event click
     />
   );
 }
 
 export default MyCalendar;
+
 

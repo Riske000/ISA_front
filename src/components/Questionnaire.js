@@ -13,6 +13,8 @@ const Questionnaire = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [showConfirmationButton, setShowConfirmationButton] = useState(false);
   const [medicalCenterId, setMedicalCenterId] = useState("");
+  const [questionnaireId, setQuestionnaireId] = useState(null);
+
 
 
   const [questionnaireDTO, setQuestionnaireDTO] = useState({
@@ -80,11 +82,15 @@ const Questionnaire = () => {
         Authorization: `${token}`,
       };
 
-      await axios.post("http://localhost:8080/api/questionanaire", questionnaireDTO, {
+      const response = await axios.post("http://localhost:8080/api/questionanaire", questionnaireDTO, {
         headers,
       });
 
-      setFormSubmitted(true); 
+      const questionnaireId = response.data.id;
+
+      setQuestionnaireId(questionnaireId); 
+
+      confirmReservation(questionnaireId);
 
     } catch (error) {
       console.error(error);
@@ -104,7 +110,7 @@ const Questionnaire = () => {
   
   };
 
-  const confirmReservation = async () => {
+  const confirmReservation = async (questionnaireId) => {
     try {
       const token = localStorage.getItem("token");
       const headers = {
@@ -125,7 +131,7 @@ const Questionnaire = () => {
       const termId = response.data;
       console.log('termId:', termId);
     
-      const reserveUrl = `http://localhost:8080/api/term/reserve?termId=${termId}&userId=${questionnaireDTO.userId}`;
+      const reserveUrl = `http://localhost:8080/api/term/reserve?termId=${termId}&userId=${questionnaireDTO.userId}&questionnaireId=${questionnaireId}`;
       await axios.post(reserveUrl, null, {
         headers,
       });

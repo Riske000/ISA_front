@@ -13,6 +13,25 @@ const AdminsCenterDetails = () => {
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("");
   const [administrators, setAdministrators] = useState([]);
+  const [bloodList, setBloodList] = useState([]);
+
+  const fetchBloodByMedicalCenter = (medicalCenterId) => {
+    const token = localStorage.getItem("token");
+
+    fetch(`http://localhost:8080/api/medical/blood/${medicalCenterId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setBloodList(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,10 +49,12 @@ const AdminsCenterDetails = () => {
           fetchMedicalCenter(data.medicalCenterId);
           fetchAdministrators(data.medicalCenterId);
           fetchRating(data.medicalCenterId); 
+          fetchBloodByMedicalCenter(data.medicalCenterId);
         } else if (data.medicalCenter && data.medicalCenter.id) {
           fetchMedicalCenter(data.medicalCenter.id);
           fetchAdministrators(data.medicalCenter.id);
           fetchRating(data.medicalCenter.id);
+          fetchBloodByMedicalCenter(data.medicalCenter.id);
         }
       })
       .catch((error) => {
@@ -298,17 +319,45 @@ const AdminsCenterDetails = () => {
           <p className="administrators-title">Administrators</p>
         </div>
         <ul className="administrators-list">
-        {administrators && Array.isArray(administrators) ? (
-  <ul className="administrators-list">
-    {administrators.map((administrator) => (
-      <li key={administrator.id}>{administrator.name}</li>
-    ))}
-  </ul>
-) : (
-  <p>No administrators found.</p>
-)}
+          {administrators && Array.isArray(administrators) ? (
+            <ul className="administrators-list">
+              {administrators.map((administrator) => (
+                <li key={administrator.id}>{administrator.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No administrators found.</p>
+          )}
         </ul>
       </div>
+
+      <div className="blood-list-container">
+  <div className="blood-list-header">
+    <p className="blood-list-title">Blood List</p>
+  </div>
+  <table className="blood-list">
+    <thead>
+      <tr>
+        <th>Deciliters</th>
+        <th>Blood Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {bloodList && Array.isArray(bloodList) ? (
+        bloodList.map((bloodType) => (
+          <tr key={bloodType.id}>
+            <td>{bloodType.deciliters}</td>
+            <td>{bloodType.bloodType}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="2">No blood types found.</td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>
     </div>
   );
 };
